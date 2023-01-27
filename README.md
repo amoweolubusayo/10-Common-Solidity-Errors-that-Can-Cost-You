@@ -2,7 +2,7 @@
 
 Solidity is a programming language used to write smart contracts on the Ethereum blockchain. Here are some of the most common Solidity errors developers make and code examples to help you understand and fix them.
 
-Reverting without an error message
+## Reverting without an error message
 
 One common error in Solidity is reverting a transaction without an error message. This can happen when the require() or assert() function is used without an error message.
 
@@ -11,7 +11,7 @@ One common error in Solidity is reverting a transaction without an error message
 require(msg.value >= 100);
 ``` 
 
-Fix
+## Fix
 
 Provide an error message for the require() or assert() function.
 
@@ -20,7 +20,7 @@ Provide an error message for the require() or assert() function.
 require(msg.value >= 100, "You need to send at least 100 wei to execute this function.");
 ```
 
-Overflow/Underflow errors
+## Overflow/Underflow errors
 
 Another common error in Solidity is an overflow or underflow error. This occurs when a value is too large or too small to be stored in a variable.
 
@@ -29,7 +29,7 @@ Another common error in Solidity is an overflow or underflow error. This occurs 
 uint256 x = 2**256;
 ```
 
-Fix
+## Fix
 
 Make sure that the value you are trying to store in a variable is within the range of that variable
 
@@ -38,7 +38,7 @@ Make sure that the value you are trying to store in a variable is within the ran
 uint256 x = 2**255;
 ```
 
-Uninitialized storage pointers
+## Uninitialized storage pointers
 
 An uninitialized storage pointer error occurs when a storage variable is not assigned a value before it is used.
 
@@ -48,7 +48,7 @@ address public owner;
 function transferOwnership(address newOwner) public { owner = newOwner; }
 ```
 
-Fix
+## Fix
 
 Initialize the storage variable with a default value before using it.
 
@@ -58,7 +58,7 @@ address public owner = msg.sender;
 function transferOwnership(address newOwner) public { owner = newOwner; }
 ```
 
-Unhandled exceptions
+## Unhandled exceptions
 
 Unhandled exceptions occur when a function does not have a catch statement to handle errors.
 
@@ -69,7 +69,7 @@ return a / b;
 }
 ```
 
-Fix
+## Fix
 
 Add a catch statement to handle errors.
 
@@ -81,7 +81,7 @@ return a / b;
 }
 ```
 
-Out-of-gas errors
+## Out-of-gas errors
 
 Out-of-gas errors occur when a smart contract runs out of gas during execution. This can happen when a contract has too many nested loops or if it performs too many computations.
 
@@ -92,7 +92,7 @@ function performComplexComputation() public {
 }
 ```
 
-Fix
+## Fix
 
 Optimize your contract by reducing the number of computations, breaking large computations into smaller chunks, and removing unnecessary nested loops.
 
@@ -113,7 +113,7 @@ function performChunk() internal {
 }
 ```
 
-Unsafe low-level calls
+## Unsafe low-level calls
 
 Unsafe low-level calls occur when a contract calls another contract without properly checking its state. This can lead to reentrancy attacks.
 
@@ -125,7 +125,7 @@ targetContract.call.value(100)();
 }
 ```
 
-Fix
+## Fix
 
 Use the safeLowlevelCall() function or the address.call.value() with a gas limit to ensure that the other contract is in a safe state before calling it.
 
@@ -147,7 +147,7 @@ function callAnotherContract() public {
 }
 ```
 
-Unchecked return values
+## Unchecked return values
 
 Unchecked return values occur when a contract calls another contract and does not check the return value. This can lead to unexpected behavior.
 
@@ -159,7 +159,7 @@ targetContract.call();
 }
 ```
 
-Fix
+## Fix
 
 Check the return value of the other contract before continuing with the execution of your contract.
 
@@ -174,7 +174,7 @@ return success;
 }
 ```
 
-Unbounded loops
+## Unbounded loops
 
 Unbounded loops occur when a contract has a loop that can run indefinitely. This can lead to out-of-gas errors and cause the contract to crash.
 
@@ -186,7 +186,7 @@ while(true) {
 }}
 ```
 
-Fix
+## Fix
 
 Add a break condition to the loop to ensure that it can only run for a certain number of iterations.
 
@@ -204,7 +204,7 @@ i++;
 }
 ```
 
-Unchecked return value before execution(very common with transfer)
+## Unchecked return value before execution(very common with transfer)
 
 One common error people make with the transfer() function in Solidity is not checking the return value before continuing the execution. This can lead to unexpected behavior and bugs in the contract, and it also makes it impossible to handle errors or revert the transaction if the transfer fails.
 
@@ -213,7 +213,7 @@ One common error people make with the transfer() function in Solidity is not che
 function transferFunds(address recipient, uint256 amount) public { recipient.transfer(amount); // Do some more processing }
 ```
 
-Fix 1
+## Fix 1
 
 Ensure that the transfer of funds is successful and handle any errors
 
@@ -226,7 +226,7 @@ return success;
 }
 ```
 
-Fix 2
+## Fix 2
 
 Use the transfer() or transferFrom() functions provided by the ERC20 standard, which will automatically revert the transaction in case of failure.
 
@@ -238,7 +238,7 @@ return true;
 }
 ```
 
-Incorrect function visibility
+## Incorrect function visibility
 
 Incorrect function visibility occurs when a contract's functions are not marked with the proper visibility (e.g. public, private, internal) which can lead to unexpected behavior and security vulnerabilities.
 
@@ -249,7 +249,7 @@ function sensitiveFunction() {
 }
 ```
 
-Fix
+## Fix
 
 ```Solidity
 function sensitiveFunction() private { 
